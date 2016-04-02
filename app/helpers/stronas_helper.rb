@@ -1,0 +1,2 @@
+module StronasHelper
+end

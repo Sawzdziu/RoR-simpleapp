@@ -1,0 +1,33 @@
+<div class="hero-unit">
+  <h1>Strony</h1>
+  <%= link_to("Dodaj nową stronę", {:action => 'nowa'}, :class => 'btn btn-mini btn-primary')%>
+
+  <p style="text-align: right">Ilość stron: <%= @stronas.size %></p>
+
+  <table class="table table-striped">
+    <tr class="info">
+      <th>Pozycja</th>
+      <th>Kategoria</th>
+      <th>Nazwa strony</th>
+      <th>Widoczna</th>
+      <th>Artykuły</th>
+      <th>Akcja</th>
+    </tr>
+    <% @stronas.each do |strona| %>
+        <tr>
+          <td><%= strona.pozycja %></td>
+          <td><%= strona.kategorie.nazwa %></td>
+          <td><%= strona.nazwa %></td>
+          <td class="center"><%= status_widoku(strona.widoczna) %></td>
+          <td class="center"><%= strona.artykuls.size %></td>
+          <td class="actions">
+            <%= link_to("Pokaż", {:action => 'pokaz', :id => strona.id}, :class => 'btn btn-xs btn-default') %>
+            <%= link_to("Edycja", {:action => 'edycja', :id => strona.id}, :class => 'btn btn-xs btn-primary') %>
+            <%= link_to("Usuń", {:action => 'usun', :id => strona.id}, :class => 'btn btn-xs btn-danger') %>
+          </td>
+        </tr>
+
+    <%end%>
+
+  </table>
+</div>

@@ -1,0 +1,44 @@
+div class="hero-unit">
+<h1>Pokaż Galerię</h1>
+
+<table class="table table-striped">
+  <tr>
+    <th>Nazwa</th>
+    <td><%= @galeria.nazwa%></td>
+  </tr>
+  <tr>
+    <th>Pozycja</th>
+    <td><%= @galeria.pozycja%></td>
+  </tr>
+  <tr>
+    <th>Czy widoczny?</th>
+    <td><%= @galeria.widoczna ? 'Tak' : 'Nie'%></td>
+  </tr>
+  <% if !@galeria.zdjecie.blank? %>
+      <tr>
+        <th>Zdjęcie</th>
+        <td><%= image_tag(@galeria.zdjecie)%></td>
+      </tr>
+  <% else %>
+      <tr>
+        <th>Zdjęcie</th>
+        <td>Brak zdjęcia</td>
+      </tr>
+  <% end %>
+  <tr>
+    <th>Opis</th>
+    <td><%= @galeria.opis%></td>
+  </tr>
+  <tr>
+    <th>Utworzona:</th>
+    <td><%= @galeria.created_at%></td>
+  </tr>
+  <tr>
+    <th>Update:</th>
+    <td><%= @galeria.updated_at%></td>
+  </tr>
+</table>
+<div style="text-align: center">
+  <%= link_to("Powrót", {:action => 'index'}, :class => 'btn btn-primary')%>
+</div>
+</div>

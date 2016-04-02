@@ -1,0 +1,19 @@
+
+<table class = "table table-striped">
+   <tr>
+     <th><%= pole.label(:nazwa)%></th>
+     <td><%= pole.text_field(:nazwa, :class => 'form-control')%></td>
+   </tr>
+   <tr>
+     <th><%= pole.label(:pozycja)%></th>
+     <td><%= pole.select(:pozycja,1..@licznik, :class => 'form-control')%></td>
+   </tr>
+   <tr>
+     <th><%= pole.label(:widoczna, "Czy jest widoczna?")%></th>
+     <td><%= pole.check_box(:widoczna)%></td>
+   </tr>
+   <tr>
+     <th><%= pole.label(:created_at, "Utworzona")%></th>
+     <td><%= pole.datetime_select(:created_at, :class => 'form-control')%></td>
+   </tr>
+ </table>

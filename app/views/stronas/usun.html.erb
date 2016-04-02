@@ -1,0 +1,17 @@
+<div class="hero-unit">
+  <h1>Usuń Stronę</h1>
+
+
+  <%= form_for(:strona, :url => {:action => 'kasuj', :id => @strona.id}) do |pole|%>
+
+      <p>Czy na pewno mam usunąć stronę?</p>
+
+      <p class="text-warning"><%= @strona.nazwa%></p>
+
+      <div style="text-align: center">
+        <%= link_to("Powrót", {:action => 'index'}, :class => 'btn btn-primary')%>
+        <%= submit_tag("Usuń", :class => 'btn btn-danger')%>
+      </div>
+
+  <% end %>
+</div>

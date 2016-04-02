@@ -1,0 +1,17 @@
+
+
+<% if objekt && objekt.errors.size > 0 %>
+  <div class="bg-danger">
+    <table class="table">
+      <tr class="danger">
+        <td>Wystąpiły błędy podczas zapisu rekordu do bazy danych, ilość błędów: <%= objekt.errors.size %><br>
+          dla następujących pól:</td>
+      </tr>
+      <% objekt.errors.full_messages.each do |komunikat| %>
+        <tr class="warning">
+          <td><b><%= komunikat %></b></td>
+        </tr>
+          <% end %>
+    </table>
+  </div>
+<% end %>

@@ -1,0 +1,38 @@
+<%= blad(@zdjecie) %>
+
+<table class = "table table-striped">
+  <tr>
+    <th><%= pole.label(:galerie_id)%></th>
+    <td><%= pole.select(:galerie_id ,@galeria.map{|parametr| [parametr.nazwa, parametr.id]},:class => 'form-control')%></td>
+  </tr>
+  <tr>
+    <th><%= pole.label(:nazwa)%></th>
+    <td><%= pole.text_field(:nazwa, :class => 'form-control')%></td>
+  </tr>
+  <tr>
+    <th><%= pole.label(:pozycja)%></th>
+    <td><%= pole.select(:pozycja,1..@licznik, :class => 'form-control')%></td>
+  </tr>
+  <tr>
+    <th><%= pole.label(:widoczne, "Czy jest widoczne?")%></th>
+    <td><%= pole.check_box(:widoczne)%></td>
+  </tr>
+  <% if !@zdjecie.zdjecie.blank? %>
+      <tr>
+        <th>Zdjęcie</th>
+        <td><%= image_tag(@zdjecie.zdjecie) %></td>
+      </tr>
+  <% end %>
+  <tr>
+    <th><%= pole.label(:zdjecie, "Zdjęcie")%></th>
+    <td><%= pole.file_field(:zdjecie)%></td>
+  </tr>
+  <tr>
+    <th><%= pole.label(:created_at, "Utworzone")%></th>
+    <td><%= pole.datetime_select(:created_at, :class => 'form-control')%></td>
+  </tr>
+  <tr>
+    <th><%= pole.label(:opis)%></th>
+    <td><%= pole.text_area(:opis, :class => 'form-control')%></td>
+  </tr>
+</table>

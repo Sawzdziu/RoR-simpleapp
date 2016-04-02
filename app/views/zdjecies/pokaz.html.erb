@@ -1,0 +1,45 @@
+<div class="hero-unit">
+<h1>Pokaż Zdjęcie</h1>
+
+<table class="table table-striped">
+  <tr>
+    <th>Nazwa Galerii</th>
+    <td><%= @zdjecie.galerie.nazwa%></td>
+  </tr>
+  <tr>
+    <th>Nazwa</th>
+    <td><%= @zdjecie.nazwa%></td>
+  </tr>
+  <tr>
+    <th>Pozycja</th>
+    <td><%= @zdjecie.pozycja%></td>
+  </tr>
+  <tr>
+    <th>Czy widoczny?</th>
+    <td><%= @zdjecie.widoczne ? 'Tak' : 'Nie'%></td>
+  </tr>
+  <tr>
+    <th>Opis</th>
+    <td><%= @zdjecie.opis%></td>
+  </tr>
+  <tr>
+    <th>Utworzone:</th>
+    <td><%= @zdjecie.created_at%></td>
+  </tr>
+  <tr>
+    <th>Update:</th>
+    <td><%= @zdjecie.updated_at%></td>
+  </tr>
+  <tr>
+    <th>Miniaturka:</th>
+    <td><%= image_tag(@zdjecie.zdjecie.url(:thumb))%></td>
+  </tr>
+  <tr>
+    <th>Zdjęcie:</th>
+    <td><%= image_tag(@zdjecie.zdjecie)%></td>
+  </tr>
+</table>
+<div style="text-align: center">
+  <%= link_to("Powrót", {:action => 'index'}, :class => 'btn btn-primary')%>
+</div>
+</div>

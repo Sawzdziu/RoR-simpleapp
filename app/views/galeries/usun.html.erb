@@ -1,0 +1,17 @@
+<div class="hero-unit">
+  <h1>Usuń Galerię</h1>
+
+
+  <%= form_for(:galeria, :url => {:action => 'kasuj', :id => @galeria.id}) do |pole|%>
+
+      <p>Czy na pewno mam usunąć galerię?</p>
+
+      <p class="text-warning"><%= @galeria.nazwa%></p>
+
+      <div style="text-align: center">
+        <%= link_to("Powrót", {:action => 'index'}, :class => 'btn btn-primary')%>
+        <%= submit_tag("Usuń", :class => 'btn btn-danger')%>
+      </div>
+
+  <% end %>
+</div>

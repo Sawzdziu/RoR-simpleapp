@@ -1,0 +1,48 @@
+<div class="hero-unit">
+  <h1>Pokaż Artykuł</h1>
+
+  <table class="table table-striped">
+    <tr>
+      <th>Strona</th>
+      <td><%= @artykul.strona.nazwa%></td>
+    </tr>
+    <tr>
+      <th>Nazwa</th>
+      <td><%= @artykul.nazwa%></td>
+    </tr>
+    <tr>
+      <th>Pozycja</th>
+      <td><%= @artykul.pozycja%></td>
+    </tr>
+    <tr>
+      <th>Czy widoczny?</th>
+      <td><%= @artykul.widoczny ? 'Tak' : 'Nie'%></td>
+    </tr>
+    <% if !@artykul.zdjecie.blank? %>
+    <tr>
+      <th>Zdjęcie</th>
+      <td><%= image_tag(@artykul.zdjecie)%></td>
+    </tr>
+    <% else %>
+        <tr>
+          <th>Zdjęcie</th>
+          <td>Brak zdjęcia</td>
+        </tr>
+    <% end %>
+    <tr>
+      <th>Treść</th>
+      <td><%= @artykul.zawartosc%></td>
+    </tr>
+    <tr>
+      <th>Utworzona:</th>
+      <td><%= @artykul.created_at%></td>
+    </tr>
+    <tr>
+      <th>Update:</th>
+      <td><%= @artykul.updated_at%></td>
+    </tr>
+  </table>
+  <div style="text-align: center">
+    <%= link_to("Powrót", {:action => 'index'}, :class => 'btn btn-primary')%>
+  </div>
+</div>

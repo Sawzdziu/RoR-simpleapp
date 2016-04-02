@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Kursy</title>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= javascript_include_tag 'application'%>
+  <meta name="viewport" content="width-device-width, initial-scale=1.0" >
+</head>
+<body>
+
+<!--główna-->
+<div class="container">
+  <% if !flash[:notice].blank? %>
+      <div class="alert alert-success" style="text-align: center">
+      <%= flash[:notice] %>
+      </div>
+  <% end %>
+  <%= yield %>
+</div>
+
+<!--stopka-->
+  <div id="footer">
+    <div class="container">
+      <p class="text-muted">
+        KS Kosynierzy &copy; <a href="http://www.kosynierzy.info" target="_blank">http://www.kosynierzy.info
+      </a>
+      </p>
+    </div>
+  </div>
+</body>
+</html>

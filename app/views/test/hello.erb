@@ -1,0 +1,31 @@
+<h1>Test#hello</h1>
+<p>app/views/test/hello.html.erb</p>
+<p>Hello !!!!</p>
+<p>
+  <% suma = 2 + 2 %>
+
+  Suma = <%= suma %>
+
+  <br>
+
+  <% imie = "Piotrek"%>
+  <%= "Witaj #{imie}" %>
+
+</p>
+
+<p>
+  <%= link_to('Powrót', {:action=>'navigation'})%>
+
+</p>
+
+<p>
+  <%= "Parametr id = " + params[:id] %>
+</p>
+
+<p>
+  <%= "Strona = " + params[:strona] %>
+</p>
+
+<p>
+  Strona = <%= params[:strona].to_i + 1 %>
+</p>

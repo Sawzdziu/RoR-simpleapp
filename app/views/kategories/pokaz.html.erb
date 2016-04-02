@@ -1,0 +1,29 @@
+<div class="hero-unit">
+<h1>Pokaż Kategorię</h1>
+
+    <table class="table table-striped">
+      <tr>
+        <th>Nazwa</th>
+        <td><%= @kategoria.nazwa%></td>
+      </tr>
+      <tr>
+        <th>Pozycja</th>
+        <td><%= @kategoria.pozycja%></td>
+      </tr>
+      <tr>
+        <th>Czy widoczna?</th>
+        <td><%= @kategoria.widoczna ? 'Tak' : 'Nie'%></td>
+      </tr>
+      <tr>
+        <th>Utworzona:</th>
+        <td><%= @kategoria.created_at%></td>
+      </tr>
+      <tr>
+        <th>Update:</th>
+        <td><%= @kategoria.updated_at%></td>
+      </tr>
+    </table>
+  <div style="text-align: center">
+  <%= link_to("Powrót", {:action => 'index'}, :class => 'btn btn-primary')%>
+  </div>
+</div>
