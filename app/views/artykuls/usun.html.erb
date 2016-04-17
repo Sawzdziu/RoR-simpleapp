@@ -2,14 +2,14 @@
   <h1>Usuń Artykuł</h1>
 
 
-  <%= form_for(:artykul, :url => {:action => 'kasuj', :id => @artykul.id}) do |pole|%>
+  <%= form_for(:artykul, :url => {:action => 'kasuj', :id => @artykul.id, :strona_id => @stronaID.id}) do |pole|%>
 
       <p>Czy na pewno mam usunąć artykuł?</p>
 
       <p class="text-warning"><%= @artykul.nazwa%></p>
 
       <div style="text-align: center">
-        <%= link_to("Powrót", {:action => 'index'}, :class => 'btn btn-primary')%>
+        <%= link_to("Powrót", {:action => 'index', :strona_id => @stronaID.id}, :class => 'btn btn-primary')%>
         <%= submit_tag("Usuń", :class => 'btn btn-danger')%>
       </div>
 

@@ -1,12 +1,12 @@
 <div class="hero-unit">
   <h1>Nowe Zdjęcie</h1>
 
-  <%= form_for(:zdjecie, :url => {:action => 'utworz'}) do |pole|%>
+  <%= form_for(:zdjecie, :url => {:action => 'utworz', :galeria_id => @galeriaID.id}) do |pole|%>
 
       <%= render(:partial => "form", :locals => {:pole => pole})%>
 
       <div style = "text-align: center">
-        <%= link_to("Powrót", {:action => 'index'}, :class =>'btn btn-warning')%>
+        <%= link_to("Powrót", {:action => 'index', :galeria_id => @galeriaID.id}, :class =>'btn btn-warning')%>
         <%= submit_tag("Utwórz", :class => 'btn btn-primary')%>
       </div>
 

@@ -1,6 +1,8 @@
 <div class="hero-unit">
+  <%= link_to("<< Powrót do galerii", {:controller => 'galeries', :action => 'index'}, :class => 'btn btn-xs btn-default') %>
+
   <h1>Zdjęcia</h1>
-  <%= link_to("Dodaj nowe zdjęcie", {:action => 'nowe'}, :class => 'btn btn-mini btn-primary')%>
+  <%= link_to("Dodaj nowe zdjęcie", {:action => 'nowe', :galeria_id => @galeriaID.id}, :class => 'btn btn-mini btn-primary')%>
 
   <p style="text-align: right">Ilość galerii: <%= @zdjecia.size %></p>
 
@@ -21,9 +23,9 @@
           <td><%= truncate(zdjecie.opis, :length => 120, :omission => "[...]") %></td>
           <td class="center"><%= status_widoku(zdjecie.widoczne) %></td>
           <td class="actions">
-            <%= link_to("Pokaż", {:action => 'pokaz', :id => zdjecie.id}, :class => 'btn btn-xs btn-default') %>
-            <%= link_to("Edycja", {:action => 'edycja', :id => zdjecie.id}, :class => 'btn btn-xs btn-primary') %>
-            <%= link_to("Usuń", {:action => 'usun', :id => zdjecie.id}, :class => 'btn btn-xs btn-danger') %>
+            <%= link_to("Pokaż", {:action => 'pokaz', :id => zdjecie.id, :galeria_id => @galeriaID.id}, :class => 'btn btn-xs btn-default') %>
+            <%= link_to("Edycja", {:action => 'edycja', :id => zdjecie.id, :galeria_id => @galeriaID.id}, :class => 'btn btn-xs btn-primary') %>
+            <%= link_to("Usuń", {:action => 'usun', :id => zdjecie.id, :galeria_id => @galeriaID.id}, :class => 'btn btn-xs btn-danger') %>
           </td>
         </tr>
 

@@ -2,7 +2,7 @@
   <h1>Usuń Zdjęcie</h1>
 
 
-  <%= form_for(:zdjecie, :url => {:action => 'kasuj', :id => @zdjecie.id}) do |pole|%>
+  <%= form_for(:zdjecie, :url => {:action => 'kasuj', :id => @zdjecie.id, :galeria_id => @galeriaID.id}) do |pole|%>
 
       <p>Czy na pewno mam usunąć zdjęcie?</p>
 
@@ -11,7 +11,7 @@
       <p class="text-warning"><%= image_tag(@zdjecie.zdjecie)%></p>
 
       <div style="text-align: center">
-        <%= link_to("Powrót", {:action => 'index'}, :class => 'btn btn-primary')%>
+        <%= link_to("Powrót", {:action => 'index', :galeria_id => @galeriaID.id}, :class => 'btn btn-primary')%>
         <%= submit_tag("Usuń", :class => 'btn btn-danger')%>
       </div>
 
