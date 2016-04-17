@@ -2,8 +2,11 @@ class StronasController < ApplicationController
 
   layout 'admin'
 
+  before_action :sprawdz_logowanie
+  before_action :szukaj_kategorie
+
   def index
-    @stronas = Strona.sortuj
+    @strony = @kategorieID.stronas.sortuj
   end
 
   def pokaz
@@ -11,8 +14,8 @@ class StronasController < ApplicationController
   end
 
   def nowa
-    @strona = Strona.new({:nazwa => "Podaj nazwę strony"})
-    @kategoria = Kategorie.order('pozycja ASC')
+    @strona = Strona.new({:kategorie_id => @kategorieID.id, :nazwa => "Podaj nazwę strony"})
+    @kategorie = Kategorie.order('pozycja ASC')
     @licznik = Strona.count + 1
   end
 
@@ -20,10 +23,10 @@ class StronasController < ApplicationController
     @strona = Strona.new(strona_parametry)
     if @strona.save
       flash[:notice] = "Strona została pomyślnie utworzona"
-      redirect_to(:action => 'index')
+      redirect_to(:action => 'index', :kategoria_id => @kategorieID.id)
     else
       @licznik = Strona.count + 1
-      @kategoria = Kategoria.order('pozycja ASC')
+      @kategorie = Kategorie.order('pozycja ASC')
       render('nowa')
     end
 
@@ -31,7 +34,7 @@ class StronasController < ApplicationController
 
   def edycja
     @strona = Strona.find(params[:id])
-    @kategoria = Kategorie.order('pozycja ASC')
+    @kategorie = Kategorie.order('pozycja ASC')
     @licznik = Strona.count
   end
 
@@ -39,10 +42,10 @@ class StronasController < ApplicationController
     @strona = Strona.find(params[:id])
     if @strona.update_attributes(strona_parametry)
       flash[:notice] = "Strona została pomyślnie zmodyfikowana"
-      redirect_to(:action =>'pokaz', :id => @strona.id)
+      redirect_to(:action =>'pokaz', :id => @strona.id, :kategoria_id => @kategorieID.id)
     else
       @licznik = Strona.count
-      @kategoria = Kategoria.order('pozycja ASC')
+      @kategoria = Kategorie.order('pozycja ASC')
       render('edycja')
     end
   end
@@ -54,10 +57,18 @@ class StronasController < ApplicationController
   def kasuj
     strona = Strona.find(params[:id]).destroy
     flash[:notice] = "Strona '#{strona.nazwa}' została pomyślnie usunięta"
-    redirect_to(:action => 'index')
+    redirect_to(:action => 'index', :kategoria_id => @kategorieID.id)
   end
 
+private
   def strona_parametry
     params.require(:strona).permit(:nazwa, :pozycja, :widoczna, :created_at, :kategorie_id)
   end
+
+  def szukaj_kategorie
+    if params[:kategoria_id]
+      @kategorieID = Kategorie.find(params[:kategoria_id])
+    end
+  end
+
 end

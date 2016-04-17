@@ -2,7 +2,7 @@
 <table class = "table table-striped">
   <tr>
     <th><%= pole.label(:kategorie_id)%></th>
-    <td><%= pole.select(:kategorie_id ,@kategoria.map{|parametr| [parametr.nazwa, parametr.id]},:class => 'form-control')%></td>
+    <td><%= pole.select(:kategorie_id ,@kategorie.map{|parametr| [parametr.nazwa, parametr.id]},:class => 'form-control')%></td>
   </tr>
   <tr>
     <th><%= pole.label(:nazwa)%></th>

@@ -2,8 +2,10 @@ class KategoriesController < ApplicationController
 
   layout 'admin'
 
+  before_action :sprawdz_logowanie
+
   def index
-    @kategorie = Kategorie.sortuj
+    @kategorieID = Kategorie.sortuj
   end
 
   def pokaz
@@ -16,8 +18,8 @@ class KategoriesController < ApplicationController
   end
 
   def utworz
-    @kategorie = Kategorie.new(kategorie_parametry)
-    if @kategorie.save
+    @kategorieID = Kategorie.new(kategorie_parametry)
+    if @kategorieID.save
       flash[:notice] = "Kategoria została pomyślnie utworzona"
       redirect_to(:action => 'index')
     else
@@ -52,7 +54,8 @@ class KategoriesController < ApplicationController
     redirect_to(:action => 'index')
   end
 
-  def kategorie_parametry
+  private def kategorie_parametry
     params.require(:kategoria).permit(:nazwa, :pozycja, :widoczna, :created_at)
   end
+
 end
